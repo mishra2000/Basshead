@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<%(0...@product.images.count).each do |index|%>
+<%=image_tag(@product.images[index])%>
+<%end%>
+<p>
+  <strong>Brand:</strong>
+  <%= @product.brand %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @product.model %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
