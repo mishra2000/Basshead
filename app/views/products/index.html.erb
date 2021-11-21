@@ -1,26 +1,5 @@
 <%# <%=image_tag("banner1", size:"auto")%>
-<script>
-  function increment()
-  {
-    count=parseInt(document.getElementById("count").value)
-    count=count+1
-    if(count>10)
-      count=10
-    if(count<1)
-      count=1
-    document.getElementById("count").value=count
-  }
-  function decrement()
-  {
-    count=parseInt(document.getElementById("count").value)
-    count=count-1
-    if(count>10)
-      count=10
-    if(count<1)
-      count=1
-    document.getElementById("count").value=count
-  }
-</script>
+
 
 <p id="notice"><%= notice %></p>
 <div style="padding-left:10px">
