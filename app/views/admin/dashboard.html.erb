@@ -1,7 +1,26 @@
 <div style="">
-<h1>Admin#dashboard</h1>
-<p>Find me in app/views/admin/dashboard.html.erb</p>
-<%= link_to "Sign Out" , destroy_user_session_path,method: :delete%>
-<%=link_to "go to main website", products_path %>
+<h1>Admin dashboard</h1>
+<h1 style="text-align:center">All Orders</h1>
+<h3 style="float:right">Total order amount:₹ <%=Order.sum(:amount)%></h3>
+<table class="table">
+  <tr>
+    <th>Order id</th>
+    <th>Customer id</th>
+    <th>amount</th>
+    <th>delivery address</th>
+    <th>custome phone no</th>
+    <th>transaction id</th>
+  </tr>
+<%Order.all.each do |order|%>
+<tr>
+  <td><%=order.id%></td>
+  <td><%=order.customer_id%></td>
+  <td><%=order.amount%></td>
+  <td><%=order.address%></td>
+  <td><%=order.phone%></td>
+  <td><%=order.transId%></td>
+</tr>
+<%end%>
+</table>
 
 </div>
