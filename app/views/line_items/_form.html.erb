@@ -12,20 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :references %>
+    <%= form.label :product_id %>
+    <%= form.text_field :product_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cart_id %>
     <%= form.text_field :cart_id %>
   </div>
-
-  <div class="field">
-    <%= form.label :references %>
-    <%= form.text_field :products_id %>
-  </div>
-
   <div class="field">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
+    <%= form.text_field :quantity %>
   </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>

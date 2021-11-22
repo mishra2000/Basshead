@@ -6,13 +6,21 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+  
   def current_cart
   	 begin
-		 Cart.find(session[:cart_id])
-	    rescue ActiveRecord::RecordNotFound
-		 cart = Cart.create
-		 session[:cart_id] = cart.id
-		 cart
-	    end
+         if(user_signed_in?)
+  		     Cart.find_by_user_id(current_user.id)
+         end
+	   rescue ActiveRecord::RecordNotFound
+        if(user_signed_in?)
+
+		      cart = Cart.create(:user_id=> current_user.id)
+		        session[:cart_id] = cart.id
+		          cart
+        else
+              cart=nil
+        end
+	   end
 	end
 end

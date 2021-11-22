@@ -1,7 +1,6 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: %i[ show edit update destroy ]
-
-  # GET /carts or /carts.json
+  before_action :allow_to_see ,only: [:show,:edit,:update,:destroy,:index]  # GET /carts or /carts.json
   def index
     @carts = Cart.all
   end
@@ -71,7 +70,11 @@ class CartsController < ApplicationController
     def set_cart
       @cart = Cart.find(params[:id])
     end
-
+    def allow_to_see
+      if !user_signed_in?
+        redirect_to root_path
+      end
+    end
     # Only allow a list of trusted parameters through.
     def cart_params
       params.fetch(:cart, {})
