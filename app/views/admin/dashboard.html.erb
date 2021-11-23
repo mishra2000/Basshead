@@ -1,26 +1,95 @@
+<style>
+      div.scroll {
+
+
+        height: 250px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: center;
+        padding: 20px;
+      }
+    </style>
 <div style="">
-<h1>Admin dashboard</h1>
+
+<h1 style="text-align:center"><u>Admin dashboard</u></h1>
 <h1 style="text-align:center">All Orders</h1>
-<h3 style="float:right">Total order amount:₹ <%=Order.sum(:amount)%></h3>
+<h3 style="float:right;margin-right:10px">Total order amount:₹ <%=Order.sum(:amount)%></h3>
+<div class="scroll" style="width:100%;height:200px">
 <table class="table">
   <tr>
     <th>Order id</th>
     <th>Customer id</th>
     <th>amount</th>
     <th>delivery address</th>
-    <th>custome phone no</th>
+    <th>customer phone no</th>
     <th>transaction id</th>
   </tr>
 <%Order.all.each do |order|%>
 <tr>
   <td><%=order.id%></td>
   <td><%=order.customer_id%></td>
-  <td><%=order.amount%></td>
+  <td>₹ <%=order.amount%></td>
   <td><%=order.address%></td>
   <td><%=order.phone%></td>
   <td><%=order.transId%></td>
 </tr>
 <%end%>
 </table>
+</div>
+<h4 style="text-align:center"><u>Other Details</u></h4>
+<div style="width:20%;float:left">
+<table class="table">
+<tr>
+<td><b>Number of users : </b></td>
+<td><%=User.count%></td>
+</tr>
 
+<tr>
+<td><b>Number of products : </b></td>
+<td><%=Product.count%></td>
+</tr>
+
+<tr>
+<td><b>Number of orders : </b></td>
+<td><%=Order.count%></td>
+</tr>
+
+</table>
+</div>
+<div style="width:25%;float:left;">
+<table class="table">
+  <tr>
+  <td><b>Recently Added Product : </b></td>
+  <td><%=Product.last.brand + " " +Product.last.model%></td>
+  </tr>
+  <tr>
+  <td><b>Highest Order Amount : </b></td>
+  <td>₹ <%=Order.maximum("amount")%></td>
+  </tr>
+  <tr>
+  <td><b>Lowest Order Amount : </b></td>
+  <td>₹ <%=Order.minimum("amount")%></td>
+  </tr>
+</table>
+</div>
+<div style="width:55%;float:left" class="scroll">
+  <h4 style="text-align:center">Products</h4>
+<table class="table">
+  <tr>
+    <th>Id</th>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Price</th>
+  </tr>
+  <%Product.all.each do |product|%>
+  <tr>
+  <td><%=product.id%></td>
+  <td><%=product.brand%></td>
+  <td><%=product.model%></td>
+  <td>₹ <%=product.price%></td>
+
+  </tr>
+<%end%>
+</table>
+</div>
 </div>

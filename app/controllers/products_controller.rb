@@ -1,6 +1,14 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
   before_action :check_admin, only: [:new,:edit,:update,:destroy]
+
+
+  def search
+    keyword = "%"+params[:search].to_s+"%"
+    @products = Product.find_by_sql(["SELECT * FROM PRODUCTS WHERE BRAND LIKE ? OR MODEL LIKE ?", keyword, keyword])
+    puts @products.inspect
+    @products
+  end
   # GET /products or /products.json
   def index
     @products = Product.all

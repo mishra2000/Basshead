@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   devise_for :users
   get '/addresses/order_info' => 'addresses#order_info'
   post '/addresses/order_info' => 'addresses#order_info'
+  get 'search' => 'products#search'
+  post 'search' => 'products#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

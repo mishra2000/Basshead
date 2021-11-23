@@ -3,6 +3,7 @@ class LineItemsController < ApplicationController
   # GET /line_items or /line_items.json
   def index
     if(user_signed_in?)
+      
     @line_items = LineItem.where(cart_id: current_cart.id.to_s)
 
     else
@@ -68,7 +69,7 @@ class LineItemsController < ApplicationController
     end
   end
 
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item

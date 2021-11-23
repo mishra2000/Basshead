@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Addresses</h1>
+<h1 style="text-align:center">Address</h1>
 
 <table>
   <thead>
@@ -39,14 +39,15 @@
 
          <%# <%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %>
       </tr>
-      <tr><td><%= link_to 'Edit address', edit_address_path(address)%></td></tr>
+      <tr><td><%= link_to 'Edit address', edit_address_path(address),class:"btn btn-dark"%></td></tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<%= link_to 'New Address', new_address_path ,class:"btn btn-info"%>
+<h2 style="text-align:center">Credit Card Details</h2>
 
-<%= link_to 'New Address', new_address_path %>
 <%# form for card details %>
 <%= form_for(:info ,:url => {:action => :order_info}) do |form| %>
 <div class="form-group"> <label for="firstname">

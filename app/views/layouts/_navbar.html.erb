@@ -23,6 +23,26 @@
 
         <%end%>
 
+
+
+            <div class="form-inline" style="position:fixed;right:0;margin-right:10px">
+        <%= form_with url: "search", action: :search ,method: :get do |form| %>
+        <div class="row">
+          <div class="col-sm-7">
+            <%= form.text_field :search,class:"form-control mr-sm-1",placeholder:"Search"  %>
+          </div>
+          <div class="col-sm-2">
+            <%= form.submit "Search", class:"btn btn-outline-success my-1 my-sm-0",:name => nil %>
+        </div>
+          <%end %>
+        </div>
+      </div>
+
+        <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+         -->
+      
+
+
       </div>
     </div>
   </div>
